@@ -12,9 +12,6 @@
                     vertical-align: baseline;
                     background: #161B22;
                 }
-                a {
-                    text-decoration: none;
-                }
                 /* Actual Styles */
                 main {
                     display: flex;
@@ -32,9 +29,6 @@
                     width: 120px;
                     height: 100%;
                     border-radius: 5px;
-                    {% if theme == 'dark' %}
-                        filter: invert(100%);
-                    {% endif %}
                 }
                 aside {
                     width: 485px;
@@ -105,9 +99,9 @@
                     overflow: hidden;
                     max-width: 260px;
                     {% if theme == 'dark' %}
-                        color: rgba(240, 248, 255, calc(2/3));
+                        color: rgba(255, 255, 255, calc(2/3));
                     {% else %}
-                        color: rgba(240, 248, 255, calc(2/3));
+                        color: rgba(255, 255, 255, calc(2/3));
                     {% endif %}
                 }
                 .logo {
@@ -148,30 +142,28 @@
                     }
                 }
             </style>
-            <a href="https://github.com/tthn0/Spotify-Readme" target="_blank">
-                <main>
-                    {% if scan_code %}
-                        <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
-                    {% endif %}
-                    <aside>
-                        <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
-                        <section>
-                            <div class="info">
-                                <div class="top">
-                                    {% if not scan_code %}
-                                        <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
-                                    {% endif %}
-                                    <h1>{{song}}</h1>
-                                </div>
-                                <p>{{artist}}</p>
+            <main>
+                {% if scan_code %}
+                    <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
+                {% endif %}
+                <aside>
+                    <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
+                    <section>
+                        <div class="info">
+                            <div class="top">
+                                {% if not scan_code %}
+                                    <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
+                                {% endif %}
+                                <h1>{{song}}</h1>
                             </div>
-                            <div class="bar-container">
-                                {{bars|safe}}
-                            </div>
-                        </section>
-                    </aside>
-                </main>
-            </a>
+                            <p>{{artist}}</p>
+                        </div>
+                        <div class="bar-container">
+                            {{bars|safe}}
+                        </div>
+                    </section>
+                </aside>
+            </main>
         </div>
     </foreignObject>
 </svg>
